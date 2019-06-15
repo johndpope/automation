@@ -6,6 +6,7 @@ import baseConfig from '../configs/webpack.base';
 const prod: Configuration = {
   mode: 'production',
   output: {
+    filename: 'index.js',
     path: path.resolve(__dirname, './build'),
   },
   optimization: {
