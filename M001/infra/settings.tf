@@ -33,3 +33,12 @@ data "terraform_remote_state" "init" {
     key    = "pocket-cards/init.tfstate"
   }
 }
+
+// -----------------------------------------
+// Lambda Module File
+// -----------------------------------------
+data "archive_file" "module" {
+  type        = "zip"
+  source_file = "${path.module}/build/index.js"
+  output_path = "${path.module}/build/index.zip"
+}
