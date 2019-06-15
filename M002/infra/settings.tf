@@ -5,7 +5,6 @@ provider "aws" {
   shared_credentials_file = "${var.shared_credentials_file}"
   profile                 = "${var.aws_profile}"
   region                  = "${local.region}"
-  version                 = "2.10.0"
 }
 
 // -----------------------------------------
@@ -24,8 +23,8 @@ data "terraform_remote_state" "init" {
 // -----------------------------------------
 // Lambda Module File
 // -----------------------------------------
-# data "archive_file" "module" {
-#   type        = "zip"
-#   source_file = "${path.module}/build/index.js"
-#   output_path = "${path.module}/build/index.zip"
-# }
+data "archive_file" "this" {
+  type        = "zip"
+  source_file = "build/index.js"
+  output_path = "build/index.zip"
+}

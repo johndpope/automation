@@ -1,13 +1,14 @@
 import * as path from 'path';
 import { Configuration, LoaderOptionsPlugin } from 'webpack';
 import * as merge from 'webpack-merge';
-import baseConfig from '../configs/webpack.base';
+import baseConfig from './webpack.base';
 
 const prod: Configuration = {
   mode: 'production',
+  externals: ['moment'],
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, '../build'),
   },
   optimization: {
     minimize: false,

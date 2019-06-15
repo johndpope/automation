@@ -14,7 +14,8 @@ terraform {
 module "this" {
   source = "github.com/wwalpha/terraform-modules-lambda"
 
-  # file_name = "build/index.zip"
+  filename         = "${data.archive_file.this.output_path}"
+  source_code_hash = "${base64sha256(filebase64("${data.archive_file.this.output_path}"))}"
 
   function_name = "${local.project_name_uc}-M002"
   handler       = "index.handler"
@@ -22,8 +23,8 @@ module "this" {
   role_name     = "${local.project_name_uc}-M002"
   # role_policy_json = ["${data.aws_iam_policy_document.dynamodb_policy.json}"]
 
-  use_dummy_file = true
-  timeout        = 5
+  # use_dummy_file = true
+  timeout = 5
 }
 
 data "aws_iam_policy_document" "dynamodb_policy" {
