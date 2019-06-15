@@ -1,20 +1,23 @@
-import { CloudWatchLogsEvent, Callback } from 'aws-lambda';
+import { ScheduledEvent } from 'aws-lambda';
 import app from './app';
 
 // イベント入口
-export const handler = (event: CloudWatchLogsEvent, _: any, callback: Callback<any>) => {
-  // イベントログ
+export const handler = async (event: ScheduledEvent) => {
+  // イベントデータ
   console.log(event);
+  // 環境変数
+  console.log(process.env);
 
-  app(event)
-    .then(() => {
-      console.log('Success');
-      // 終了ログ
-      callback(null, 'Success');
-    })
-    .catch(err => {
-      // エラーログ
-      console.log('Error:', err);
-      callback(err, null);
-    });
+  try {
+    const res = await app(event);
+
+    // 処理結果
+    console.log(res);
+
+    return res;
+  } catch (error) {
+    console.log(error);
+
+    return error;
+  }
 };

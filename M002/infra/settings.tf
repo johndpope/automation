@@ -24,8 +24,8 @@ data "terraform_remote_state" "init" {
 // -----------------------------------------
 // Lambda Module File
 // -----------------------------------------
-data "archive_file" "module" {
-  type        = "zip"
-  source_file = "${path.module}/build/index.js"
-  output_path = "${path.module}/build/index.zip"
-}
+# data "archive_file" "module" {
+#   type        = "zip"
+#   source_file = "${path.module}/build/index.js"
+#   output_path = "${path.module}/build/index.zip"
+# }
