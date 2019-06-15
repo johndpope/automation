@@ -1,0 +1,27 @@
+{
+  "name": "pocket-cards-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn install && yarn build",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "aws-xray-sdk": "latest"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "latest",
+    "@types/clean-webpack-plugin": "^0.1.3",
+    "@types/node": "latest",
+    "@types/webpack": "latest",
+    "@types/webpack-merge": "latest",
+    "clean-webpack-plugin": "^3.0.0",
+    "ts-loader": "latest",
+    "ts-node": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-merge": "latest"
+  }
+}
