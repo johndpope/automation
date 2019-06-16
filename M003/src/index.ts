@@ -6,12 +6,13 @@ export const handler = async (event: M003Event) => {
   console.log(event);
 
   try {
-    const res = await app(event);
+    // 本処理実行
+    await app(event);
 
     // 処理結果
-    console.log(res);
+    console.log('Success');
 
-    return res;
+    return;
   } catch (error) {
     console.log(error);
 

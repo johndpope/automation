@@ -18,4 +18,5 @@ locals {
   xray   = "${local.remote_layers.layers.xray}"
   moment = "${local.remote_layers.layers.moment}"
   lodash = "${local.remote_layers.layers.lodash}"
+  axios  = "${local.remote_layers.layers.axios}"
 }

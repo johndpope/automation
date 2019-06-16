@@ -28,5 +28,9 @@ export default async (event: M003Event): Promise<void> => {
 
   const slackUrl = result.Parameter.Value;
 
-  await axios.post(slackUrl, event.message);
+  await axios.post(slackUrl, {
+    payload: {
+      text: event.message,
+    },
+  });
 };

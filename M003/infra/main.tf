@@ -21,7 +21,7 @@ module "this" {
   handler          = "index.handler"
   runtime          = "nodejs10.x"
   role_name        = "${local.project_name_uc}-M003"
-  layers           = ["${local.xray}"]
+  layers           = ["${local.xray}", "${local.axios}"]
   role_policy_json = ["${data.aws_iam_policy_document.ssm_policy.json}"]
 
   variables = {
