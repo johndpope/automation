@@ -20,6 +20,16 @@ data "terraform_remote_state" "init" {
   }
 }
 
+data "terraform_remote_state" "layers" {
+  backend = "s3"
+
+  config = {
+    bucket = "terraform-backend-xxx"
+    region = "ap-northeast-1"
+    key    = "pocket-cards/layers.tfstate"
+  }
+}
+
 // -----------------------------------------
 // Lambda Module File
 // -----------------------------------------

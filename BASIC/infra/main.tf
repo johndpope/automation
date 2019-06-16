@@ -5,7 +5,7 @@ terraform {
   backend "s3" {
     bucket = "terraform-backend-xxx"
     region = "ap-northeast-1"
-    key    = "pocket-cards/automation_M001.tfstate"
+    key    = "pocket-cards/automation_XXXX.tfstate"
   }
 
   required_version = ">= 0.12"

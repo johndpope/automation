@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "prestart": "cd .. && yarn XXXX",
     "start": "yarn build && yarn app",
     "plan": "yarn infra:init && yarn infra:plan",
     "app": "yarn infra:init && yarn infra:app",
