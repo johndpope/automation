@@ -33,7 +33,7 @@ data "terraform_remote_state" "layers" {
 // -----------------------------------------
 // Lambda Module File
 // -----------------------------------------
-data "archive_file" "module" {
+data "archive_file" "this" {
   type        = "zip"
   source_file = "build/index.js"
   output_path = "build/index.zip"
