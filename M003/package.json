@@ -5,11 +5,10 @@
   "license": "MIT",
   "scripts": {
     "prestart": "cd .. && yarn M003",
-    "start": "yarn inits && yarn build && yarn app",
-    "inits": "../update.bat M003",
+    "start": "yarn build && yarn app",
     "plan": "yarn infra:init && yarn infra:plan",
     "app": "yarn infra:init && yarn infra:app",
-    "build": "webpack",
+    "build": "webpack --config configs/webpack.prod.ts",
     "sam:api": "sam local start-api -t test/template.yml -n test/envs.json",
     "test": "mocha -r ts-node/register \"test/**/*.ts\" --timeout 10000",
     "valid": "tsc --noEmit",
@@ -18,8 +17,9 @@
     "infra:app": "terraform apply -var-file infra/terraform.tfvars -auto-approve infra"
   },
   "dependencies": {
+    "aws-sdk": "latest",
     "aws-xray-sdk": "latest",
-    "aws-sdk": "latest"
+    "axios": "^0.19.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "latest",
@@ -29,14 +29,13 @@
     "@types/node": "latest",
     "@types/webpack": "latest",
     "@types/webpack-merge": "latest",
-    "@types/clean-webpack-plugin": "latest",
     "chai": "latest",
+    "clean-webpack-plugin": "latest",
     "jest": "latest",
     "mocha": "latest",
     "ts-loader": "latest",
     "ts-node": "latest",
     "typescript": "latest",
-    "clean-webpack-plugin": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-merge": "latest"

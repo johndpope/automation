@@ -9,7 +9,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/clean-webpack-plugin": "latest",
     "@types/node": "latest",
     "@types/webpack": "latest",
     "@types/webpack-merge": "latest",
