@@ -18,24 +18,26 @@
   "dependencies": {
     "aws-sdk": "latest",
     "aws-xray-sdk": "latest",
+    "lodash": "^4.17.11",
     "moment": "^2.24.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "latest",
     "@types/chai": "latest",
+    "@types/clean-webpack-plugin": "latest",
     "@types/jest": "latest",
+    "@types/lodash": "^4.14.134",
     "@types/mocha": "latest",
     "@types/node": "latest",
     "@types/webpack": "latest",
     "@types/webpack-merge": "latest",
-    "@types/clean-webpack-plugin": "latest",
     "chai": "latest",
+    "clean-webpack-plugin": "latest",
     "jest": "latest",
     "mocha": "latest",
     "ts-loader": "latest",
     "ts-node": "latest",
     "typescript": "latest",
-    "clean-webpack-plugin": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-merge": "latest"

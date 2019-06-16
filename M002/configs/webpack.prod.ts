@@ -5,7 +5,6 @@ import baseConfig from './webpack.base';
 
 const prod: Configuration = {
   mode: 'production',
-  externals: ['moment'],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '../build'),
