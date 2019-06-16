@@ -1,1 +1,1 @@
-export * from 'aws-xray-sdk';
+module.exports = require('aws-xray-sdk');

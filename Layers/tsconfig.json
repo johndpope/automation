@@ -15,5 +15,6 @@
     }
   },
   "include": ["src/**/*", "test/**/*"],
+  "exclude": ["src/library/*", "src/**/node_modules"],
   "files": ["./typings/types.d.ts", "./typings/external.d.ts"]
 }

@@ -7,9 +7,10 @@
     "start": "yarn build && yarn app",
     "plan": "yarn infra:init && yarn infra:plan",
     "app": "yarn infra:init && yarn infra:app",
-    "build": "yarn build1 && yarn build2",
+    "build": "yarn build1 && yarn build2 && yarn build3",
     "build1": "cd src/moment && yarn start",
     "build2": "cd src/xray && yarn start",
+    "build3": "cd src/lodash && yarn start",
     "infra:init": "terraform init infra",
     "infra:plan": "terraform plan -var-file infra/terraform.tfvars infra",
     "infra:app": "terraform apply -var-file infra/terraform.tfvars -auto-approve infra"
