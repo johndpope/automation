@@ -68,3 +68,23 @@ resource "aws_lambda_layer_version" "lodash" {
 
   compatible_runtimes = ["nodejs8.10", "nodejs10.x"]
 }
+
+
+// -----------------------------------------
+// axios
+// -----------------------------------------
+data "archive_file" "axios" {
+  type = "zip"
+
+  source_dir  = "build/axios"
+  output_path = "build/axios/nodejs.zip"
+}
+
+resource "aws_lambda_layer_version" "axios" {
+  layer_name = "axios"
+
+  filename         = "${data.archive_file.axios.output_path}"
+  source_code_hash = "${filebase64sha256("${data.archive_file.axios.output_path}")}"
+
+  compatible_runtimes = ["nodejs8.10", "nodejs10.x"]
+}
