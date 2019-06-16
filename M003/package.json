@@ -1,0 +1,44 @@
+{
+  "name": "pocket-cards-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "prestart": "cd .. && yarn M003",
+    "start": "yarn inits && yarn build && yarn app",
+    "inits": "../update.bat M003",
+    "plan": "yarn infra:init && yarn infra:plan",
+    "app": "yarn infra:init && yarn infra:app",
+    "build": "webpack",
+    "sam:api": "sam local start-api -t test/template.yml -n test/envs.json",
+    "test": "mocha -r ts-node/register \"test/**/*.ts\" --timeout 10000",
+    "valid": "tsc --noEmit",
+    "infra:init": "terraform init infra",
+    "infra:plan": "terraform plan -var-file infra/terraform.tfvars infra",
+    "infra:app": "terraform apply -var-file infra/terraform.tfvars -auto-approve infra"
+  },
+  "dependencies": {
+    "aws-xray-sdk": "latest",
+    "aws-sdk": "latest"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "latest",
+    "@types/chai": "latest",
+    "@types/jest": "latest",
+    "@types/mocha": "latest",
+    "@types/node": "latest",
+    "@types/webpack": "latest",
+    "@types/webpack-merge": "latest",
+    "@types/clean-webpack-plugin": "latest",
+    "chai": "latest",
+    "jest": "latest",
+    "mocha": "latest",
+    "ts-loader": "latest",
+    "ts-node": "latest",
+    "typescript": "latest",
+    "clean-webpack-plugin": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-merge": "latest"
+  }
+}

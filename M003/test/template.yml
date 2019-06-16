@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  XXXX:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../build/
+      Runtime: nodejs10.x
+      Handler: index.handler
+      Timeout: 5
+      MemorySize: 1024
+      Environment:
+        Variables:
+          PROJECT_NAME: dummy
+          SLACK_URL_KEY: dummy
+
