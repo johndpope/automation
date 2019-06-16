@@ -24,5 +24,5 @@ targets.forEach(item => {
   const dest = paths.join('/');
 
   // コピー
-  cpx.copySync('./BASIC/configs/webpack.base.ts', './M003/configs/');
+  cpx.copySync(item, dest);
 });
