@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {},
-  "devDependencies": {
-    "webpack": "latest",
-    "clean-webpack-plugin": "latest"
+  "scripts": {
+    "M001": "cross-env FUNCTION=M001 node sync",
+    "M002": "cross-env FUNCTION=M002 node sync",
+    "M003": "cross-env FUNCTION=M003 node sync"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "cross-env": "^5.2.0",
+    "glob": "^7.1.4"
   }
 }

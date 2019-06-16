@@ -1,5 +1,3 @@
-// var AWSXRay = require('aws-xray-sdk');
-import AWSXRay from 'aws-xray-sdk';
 import { CloudWatchLogsEvent } from 'aws-lambda';
 import { SSM } from 'aws-sdk';
 import axios from 'axios';
