@@ -25,8 +25,7 @@ module "this" {
   role_policy_json = ["${data.aws_iam_policy_document.ssm_policy.json}"]
 
   variables = {
-    PROJECT_NAME  = "${local.project_name}"
-    SLACK_URL_KEY = "slack_url"
+    SLACK_URL_KEY = "${local.slack_url}"
   }
   timeout = 5
 }

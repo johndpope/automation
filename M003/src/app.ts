@@ -7,7 +7,6 @@ import axios from 'axios';
 const AWS = XRay.captureAWS(AWSSDK);
 
 // 環境変数
-const PROJECT_NAME = process.env.PROJECT_NAME as string;
 const SLACK_URL_KEY = process.env.SLACK_URL_KEY as string;
 
 export default async (event: M003Event): Promise<void> => {
@@ -18,7 +17,7 @@ export default async (event: M003Event): Promise<void> => {
 
   const result = await client
     .getParameter({
-      Name: `/${PROJECT_NAME}/${SLACK_URL_KEY}`,
+      Name: SLACK_URL_KEY,
     })
     .promise();
 
