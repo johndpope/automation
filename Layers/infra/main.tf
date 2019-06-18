@@ -26,7 +26,7 @@ resource "aws_lambda_layer_version" "xray" {
   layer_name = "aws-xray-sdk"
 
   filename         = "${data.archive_file.xray.output_path}"
-  source_code_hash = "${base64sha256(filebase64("${data.archive_file.xray.output_path}"))}"
+  source_code_hash = "${filebase64sha256("${data.archive_file.xray.output_path}")}"
 
   compatible_runtimes = ["nodejs8.10", "nodejs10.x"]
 }
