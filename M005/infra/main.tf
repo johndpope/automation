@@ -18,6 +18,7 @@ module "this" {
   filename         = "${data.archive_file.this.output_path}"
   source_code_hash = "${filebase64sha256("${data.archive_file.this.output_path}")}"
 
+  enable_xray      = true
   function_name    = "${local.project_name_uc}-M005"
   handler          = "index.handler"
   runtime          = "nodejs10.x"
@@ -29,7 +30,7 @@ module "this" {
   trigger_source_arn = "${aws_cloudwatch_event_rule.this.arn}"
 
   variables = {
-    CALL_SLACK_FUNCTION = "PocketCards-M005"
+    CALL_SLACK_FUNCTION = "PocketCards-M003"
   }
 
   timeout = 5

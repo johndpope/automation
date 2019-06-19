@@ -17,6 +17,7 @@ module "this" {
   filename         = "${data.archive_file.this.output_path}"
   source_code_hash = "${filebase64sha256("${data.archive_file.this.output_path}")}"
 
+  enable_xray        = true
   function_name      = "${local.project_name_uc}-M004"
   handler            = "index.handler"
   runtime            = "nodejs10.x"
