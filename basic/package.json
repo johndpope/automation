@@ -13,6 +13,7 @@
     "test": "mocha -r ts-node/register \"test/**/*.ts\" --timeout 10000",
     "valid": "tsc --noEmit",
     "infra:init": "terraform init infra",
+    "infra:upgrade": "terraform init -upgrade=true infra",
     "infra:plan": "terraform plan -var-file infra/terraform.tfvars infra",
     "infra:app": "terraform apply -var-file infra/terraform.tfvars -auto-approve infra"
   },

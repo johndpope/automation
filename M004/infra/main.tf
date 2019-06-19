@@ -26,9 +26,10 @@ module "this" {
   trigger_principal  = "events.amazonaws.com"
   trigger_source_arn = "${aws_cloudwatch_event_rule.this.arn}"
 
-  # variables = {
-  #   SLACK_URL_KEY = "${local.slack_url}"
-  # }
+  variables = {
+    CALL_SLACK_FUNCTION = "PocketCards-M005"
+  }
+
   timeout = 5
 }
 

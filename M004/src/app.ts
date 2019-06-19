@@ -14,7 +14,7 @@ export default async (event: any): Promise<void> => {
   // 非同期でLambdaを呼び出す
   await client
     .invoke({
-      FunctionName: 'PocketCards-M003',
+      FunctionName: process.env.CALL_SLACK_FUNCTION as string,
       InvocationType: 'Event',
       Payload: JSON.stringify({
         message: `CodeBuild Error...\nProject: ${project}\nLog Link: <${logLink}|CloudWatch Logs>`,
