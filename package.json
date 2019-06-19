@@ -6,7 +6,9 @@
   "scripts": {
     "M001": "cross-env FUNCTION=M001 node sync",
     "M002": "cross-env FUNCTION=M002 node sync",
-    "M003": "cross-env FUNCTION=M003 node sync"
+    "M003": "cross-env FUNCTION=M003 node sync",
+    "M004": "cross-env FUNCTION=M004 node sync",
+    "M005": "cross-env FUNCTION=M005 node sync"
   },
   "dependencies": {
     "cpx": "^1.5.0",
