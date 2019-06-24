@@ -4,20 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "M001": "cross-env FUNCTION=M001 node sync",
-    "M002": "cross-env FUNCTION=M002 node sync",
-    "M003": "cross-env FUNCTION=M003 node sync",
-    "M004": "cross-env FUNCTION=M004 node sync",
-    "M005": "cross-env FUNCTION=M005 node sync"
+    "start": "yarn build && yarn apply",
+    "build": "webpack --config configs/webpack.prod.ts",
+    "apply": "cd terraform && terraform apply -auto-approve"
   },
   "dependencies": {
+    "aws-sdk": "latest",
     "aws-xray-sdk": "latest",
-    "aws-sdk": "latest"
+    "axios": "^0.19.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
-    "cpx": "^1.5.0",
-    "cross-env": "^5.2.0",
-    "glob": "^7.1.4",
     "@types/aws-lambda": "latest",
     "@types/chai": "latest",
     "@types/jest": "latest",
@@ -26,12 +23,15 @@
     "@types/webpack": "latest",
     "@types/webpack-merge": "latest",
     "chai": "latest",
+    "clean-webpack-plugin": "latest",
+    "cpx": "^1.5.0",
+    "cross-env": "^5.2.0",
+    "glob": "^7.1.4",
     "jest": "latest",
     "mocha": "latest",
     "ts-loader": "latest",
     "ts-node": "latest",
     "typescript": "latest",
-    "clean-webpack-plugin": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-merge": "latest"

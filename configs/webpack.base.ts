@@ -58,5 +58,4 @@ const configs: Configuration = {
   bail: true,
 };
 
-console.log(configs);
 export default configs;

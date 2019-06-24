@@ -1,7 +1,7 @@
-import { M003Event } from 'src';
 import * as XRay from 'aws-xray-sdk';
 import * as AWSSDK from 'aws-sdk';
 import axios from 'axios';
+import { M003Event } from './index';
 
 // 初期化
 const AWS = XRay.captureAWS(AWSSDK);
