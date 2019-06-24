@@ -1,0 +1,11 @@
+{
+  "name": "terraform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "plan": "terraform plan",
+    "app": "terraform apply -auto-approve",
+    "imp": "terraform import aws_sns_topic_subscription.m001 arn:aws:sns:ap-northeast-1:311178267809:Default_CloudWatch_Alarms_Topic:308c8fc2-1731-4a30-b6bb-2d225f06e2b4"
+  }
+}
