@@ -11,8 +11,29 @@
     "M005": "cross-env FUNCTION=M005 node sync"
   },
   "dependencies": {
+    "aws-xray-sdk": "latest",
+    "aws-sdk": "latest"
+  },
+  "devDependencies": {
     "cpx": "^1.5.0",
     "cross-env": "^5.2.0",
-    "glob": "^7.1.4"
+    "glob": "^7.1.4",
+    "@types/aws-lambda": "latest",
+    "@types/chai": "latest",
+    "@types/jest": "latest",
+    "@types/mocha": "latest",
+    "@types/node": "latest",
+    "@types/webpack": "latest",
+    "@types/webpack-merge": "latest",
+    "chai": "latest",
+    "jest": "latest",
+    "mocha": "latest",
+    "ts-loader": "latest",
+    "ts-node": "latest",
+    "typescript": "latest",
+    "clean-webpack-plugin": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-merge": "latest"
   }
 }
