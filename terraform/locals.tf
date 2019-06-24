@@ -14,6 +14,7 @@ locals {
   # Lambda Environments
   # -----------------------------------------------
   dynamodb_tables = "${join(",", local.remote_init.dynamodb_tables)}"
+  slack_url       = "${local.remote_init.ssm_param_slack_url}"
 
   xray   = "${local.remote_layers.layers.xray}"
   moment = "${local.remote_layers.layers.moment}"

@@ -3,8 +3,8 @@
 // -----------------------------------------
 data "archive_file" "m005" {
   type        = "zip"
-  source_file = "build/index.js"
-  output_path = "build/index.zip"
+  source_file = "../build/m005/index.js"
+  output_path = "../build/m005/index.zip"
 }
 
 module "m005" {
@@ -17,7 +17,7 @@ module "m005" {
   function_name    = "${local.project_name_uc}-M005"
   handler          = "index.handler"
   runtime          = "nodejs10.x"
-  role_name        = "${local.project_name_uc}-M005"
+  role_name        = "${local.project_name_uc}-M005Role"
   layers           = ["${local.xray}"]
   role_policy_json = ["${data.aws_iam_policy_document.m005_lambda.json}"]
 

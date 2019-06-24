@@ -7,7 +7,7 @@ module "m003" {
   function_name    = "${local.project_name_uc}-M003"
   handler          = "index.handler"
   runtime          = "nodejs10.x"
-  role_name        = "${local.project_name_uc}-M003"
+  role_name        = "${local.project_name_uc}-M003Role"
   layers           = ["${local.xray}", "${local.axios}"]
   role_policy_json = ["${data.aws_iam_policy_document.m003_ssm_policy.json}"]
 
@@ -23,8 +23,8 @@ module "m003" {
 // -----------------------------------------
 data "archive_file" "m003" {
   type        = "zip"
-  source_file = "build/index.js"
-  output_path = "build/index.zip"
+  source_file = "../build/m003/index.js"
+  output_path = "../build/m003/index.zip"
 }
 
 // -----------------------------------------

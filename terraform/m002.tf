@@ -8,7 +8,7 @@ module "m002" {
   function_name    = "${local.project_name_uc}-M002"
   handler          = "index.handler"
   runtime          = "nodejs10.x"
-  role_name        = "${local.project_name_uc}-M002"
+  role_name        = "${local.project_name_uc}-M002Role"
   layers           = ["${local.xray}", "${local.lodash}", "${local.moment}"]
   role_policy_json = ["${data.aws_iam_policy_document.m002_dynamodb_policy.json}"]
 
@@ -25,8 +25,8 @@ module "m002" {
 // -----------------------------------------
 data "archive_file" "m002" {
   type        = "zip"
-  source_file = "build/index.js"
-  output_path = "build/index.zip"
+  source_file = "../build/m002/index.js"
+  output_path = "../build/m002/index.zip"
 }
 
 // -----------------------------------------

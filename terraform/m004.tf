@@ -3,8 +3,8 @@
 module "m004" {
   source = "github.com/wwalpha/terraform-modules-lambda"
 
-  filename         = "${data.archive_file.this.output_path}"
-  source_code_hash = "${filebase64sha256("${data.archive_file.this.output_path}")}"
+  filename         = "${data.archive_file.m004.output_path}"
+  source_code_hash = "${filebase64sha256("${data.archive_file.m004.output_path}")}"
 
   enable_xray        = true
   function_name      = "${local.project_name_uc}-M004"
@@ -14,10 +14,10 @@ module "m004" {
   layers             = ["${local.xray}"]
   role_policy_json   = ["${data.aws_iam_policy_document.m004_lambda.json}"]
   trigger_principal  = "events.amazonaws.com"
-  trigger_source_arn = "${aws_cloudwatch_event_rule.this.arn}"
+  trigger_source_arn = "${aws_cloudwatch_event_rule.m004.arn}"
 
   variables = {
-    CALL_SLACK_FUNCTION = "PocketCards-M005"
+    CALL_SLACK_FUNCTION = "PocketCards-M005Role"
   }
 
   timeout = 5
@@ -28,8 +28,8 @@ module "m004" {
 // -----------------------------------------
 data "archive_file" "m004" {
   type        = "zip"
-  source_file = "build/index.js"
-  output_path = "build/index.zip"
+  source_file = "../build/m004/index.js"
+  output_path = "../build/m004/index.zip"
 }
 
 # ------------------------------
