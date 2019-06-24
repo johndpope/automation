@@ -6,25 +6,16 @@
       "EventSubscriptionArn": "arn:aws:sns:us-east-1::ExampleTopic",
       "Sns": {
         "Type": "Notification",
-        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
-        "TopicArn": "arn:aws:sns:us-east-1:123456789012:ExampleTopic",
-        "Subject": "example subject",
-        "Message": "example message",
-        "Timestamp": "1990-01-01T00:00:00.000Z",
+        "MessageId": "2d518bd8-aacc-5f75-90aa-de5271088c4f",
+        "TopicArn": "arn:aws:sns:ap-northeast-1:311178267809:PocketCards_LambdaError",
+        "Subject": "ALARM: \"PocketCards-LambdaErrors\" in Asia Pacific (Tokyo)",
+        "Message": "{\"AlarmName\":\"PocketCards-LambdaErrors\",\"AlarmDescription\":\"This metric monitors ec2 cpu utilization\",\"AWSAccountId\":\"311178267809\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 out of the last 1 datapoints [1.0 (24/06/19 14:08:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).\",\"StateChangeTime\":\"2019-06-24T14:09:08.007+0000\",\"Region\":\"Asia Pacific (Tokyo)\",\"OldStateValue\":\"INSUFFICIENT_DATA\",\"Trigger\":{\"MetricName\":\"Errors\",\"Namespace\":\"AWS/Lambda\",\"StatisticType\":\"Statistic\",\"Statistic\":\"AVERAGE\",\"Unit\":null,\"Dimensions\":[],\"Period\":60,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"Threshold\":1.0,\"TreatMissingData\":\"\",\"EvaluateLowSampleCountPercentile\":\"\"}}",
+        "Timestamp": "2019-06-24T14:09:08.025Z",
         "SignatureVersion": "1",
-        "Signature": "EXAMPLE",
-        "SigningCertUrl": "EXAMPLE",
-        "UnsubscribeUrl": "EXAMPLE",
-        "MessageAttributes": {
-          "Test": {
-            "Type": "String",
-            "Value": "TestString"
-          },
-          "TestBinary": {
-            "Type": "Binary",
-            "Value": "TestBinary"
-          }
-        }
+        "Signature": "gCqaODStcpJ4f2P7c1MT859+axOytZR+vSyGwVR9DrJ76Shs6xTJdN21ZnfnhHQk2+xsXXAFM8kpekkWd5oaEGaLPe+B+H3KI0ODVoeT3XIFYPBmOqlenk6WwB5eg0NCprWsSxpJyQhaVssR1cq/c3TlinohmMG8BeQ78Skkj5WHM3rqRe5Slz9rKdIit3qWWwi2PFvbPlRnI2k590w88OfRNQEtlEmxFekIvqo5FgwuEsoMdkVKuH+iPk/DJE5lm5De58eDjliS9QMSJMKGLsV/U5wkNycLEJi3qRP/dSkC1lGC8/kCtS2cr6waaUGadJ3Gu4F9C87MjEj0oL9oKg==",
+        "SigningCertUrl": "https://sns.ap-northeast-1.amazonaws.com/SimpleNotificationService-6aad65c2f9911b05cd53efda11f913f9.pem",
+        "UnsubscribeUrl": "https://sns.ap-northeast-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-northeast-1:311178267809:PocketCards_LambdaError:d5803a11-a921-4b8b-94b8-df6e5bdf154d",
+        "MessageAttributes": {}
       }
     }
   ]

@@ -15,6 +15,8 @@ export default async (event: SNSEvent): Promise<void> => {
     return;
   }
 
+  console.log(event.Records[0].Sns);
+
   const groupList = await client.describeLogGroups({ logGroupNamePrefix: GROUPNAME_PREFIX }).promise();
   let logGroups = groupList.logGroups;
 
@@ -32,8 +34,6 @@ export default async (event: SNSEvent): Promise<void> => {
   // 対象
   const groups = ((await Promise.all(logTasks)).filter(item => item != null) as unknown) as CloudWatchLogs.LogGroup[];
   const results: (string | null)[] = [];
-
-  console.log(groups);
 
   const record = event.Records[0];
   const time = record.Sns.Timestamp;
@@ -89,8 +89,9 @@ const task = async (logGroup: CloudWatchLogs.LogGroup, startTime: number, endTim
   }
 
   // 検索結果なし
-  if (!queryResults) return null;
+  if (!queryResults || queryResults.length === 0) return null;
 
+  console.log(queryResults);
   return logGroup.logGroupName.replace('/aws/lambda/', '');
 };
 

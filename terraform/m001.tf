@@ -64,11 +64,15 @@ module "m001" {
   runtime            = "nodejs10.x"
   memory_size        = 512
   timeout            = 120
-  role_name          = "${local.project_name_uc}-M001Role"
-  role_policy_json   = ["${data.aws_iam_policy_document.m001_lambda.json}"]
   trigger_principal  = "sns.amazonaws.com"
   trigger_source_arn = "${aws_sns_topic.m001.arn}"
   layers             = ["${local.xray}", "${local.moment}"]
+
+  role_name = "${local.project_name_uc}-M001Role"
+  role_policy_json = [
+    "${data.aws_iam_policy_document.m001_lambda.json}",
+    "${data.aws_iam_policy_document.m001_cloudwatch.json}"
+  ]
 
   variables = {
     CALL_SLACK_FUNCTION = "PocketCards-M003"
@@ -83,6 +87,34 @@ data "aws_iam_policy_document" "m001_lambda" {
   statement {
     actions = [
       "lambda:InvokeFunction",
+    ]
+
+    effect = "Allow"
+
+    resources = [
+      "*",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "m001_cloudwatch" {
+  statement {
+    actions = [
+      "logs:DescribeLogGroups",
+      "logs:DescribeLogStreams",
+      "logs:StartQuery"
+    ]
+
+    effect = "Allow"
+
+    resources = [
+      "arn:aws:logs:${local.region}:${local.account_id}:log-group:*",
+    ]
+  }
+
+  statement {
+    actions = [
+      "logs:GetQueryResults",
     ]
 
     effect = "Allow"
