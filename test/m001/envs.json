@@ -1,6 +1,6 @@
 {
   "M001": {
-    "PROJECT_NAME": "pocket-cards",
-    "SLACK_URL_KEY": "slack_url"
+    "GROUPNAME_PREFIX": "/aws/lambda/PocketCards",
+    "CALL_SLACK_FUNCTION": "PocketCards-M003"
   }
 }

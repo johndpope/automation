@@ -4,16 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn build && yarn apply",
-    "debug": "webpack -w --config configs/webpack.prod.ts",
-    "build": "webpack --config configs/webpack.prod.ts",
-    "apply": "cd terraform && terraform apply -auto-approve"
+    "start": "sam local invoke -e test.json -n envs.json",
+    "generate": "sam local generate-event sns notification",
+    "sam:api": "sam local start-api -t test/template.yml -n test/envs.json"
   },
   "dependencies": {
-    "aws-sdk": "latest",
     "aws-xray-sdk": "latest",
-    "axios": "^0.19.0",
-    "moment": "^2.24.0"
+    "aws-sdk": "latest"
   },
   "devDependencies": {
     "@types/aws-lambda": "latest",
@@ -24,15 +21,12 @@
     "@types/webpack": "latest",
     "@types/webpack-merge": "latest",
     "chai": "latest",
-    "clean-webpack-plugin": "latest",
-    "cpx": "^1.5.0",
-    "cross-env": "^5.2.0",
-    "glob": "^7.1.4",
     "jest": "latest",
     "mocha": "latest",
     "ts-loader": "latest",
     "ts-node": "latest",
     "typescript": "latest",
+    "clean-webpack-plugin": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-merge": "latest"

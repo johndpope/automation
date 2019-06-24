@@ -5,13 +5,13 @@ Resources:
   M001:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ../build/
+      CodeUri: ../../build/m001
       Runtime: nodejs10.x
       Handler: index.handler
-      Timeout: 5
+      Timeout: 100
       MemorySize: 1024
       Environment:
         Variables:
-          PROJECT_NAME: dummy
-          SLACK_URL_KEY: dummy
+          CALL_SLACK_FUNCTION: dummy
+          GROUPNAME_PREFIX: dummy
 
