@@ -56,7 +56,7 @@ const task = async (logGroup: CloudWatchLogs.LogGroup, startTime: number, endTim
 
   const request: CloudWatchLogs.Types.StartQueryRequest = {
     logGroupName: logGroup.logGroupName,
-    queryString: 'stats count() | filter @message like /(Exception|error|fail)/',
+    queryString: 'stats count() | filter @message like /(ERROR)/',
     startTime,
     endTime,
   };
