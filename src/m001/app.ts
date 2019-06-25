@@ -1,4 +1,4 @@
-import { SNSEvent } from 'aws-lambda';
+import { ScheduledEvent } from 'aws-lambda';
 import { CloudWatchLogs } from 'aws-sdk';
 import * as XRay from 'aws-xray-sdk';
 import * as AWSSDK from 'aws-sdk';
@@ -9,14 +9,7 @@ const AWS = XRay.captureAWS(AWSSDK);
 const GROUPNAME_PREFIX = process.env.GROUPNAME_PREFIX as string;
 const client = new AWS.CloudWatchLogs({ region: process.env.AWS_DEFAULT_REGION });
 
-export default async (event: SNSEvent): Promise<void> => {
-  // パラメータチェック
-  if (event.Records.length === 0) {
-    return;
-  }
-
-  console.log(event.Records[0].Sns);
-
+export default async (event: ScheduledEvent): Promise<void> => {
   const groupList = await client.describeLogGroups({ logGroupNamePrefix: GROUPNAME_PREFIX }).promise();
   let logGroups = groupList.logGroups;
 
@@ -35,17 +28,17 @@ export default async (event: SNSEvent): Promise<void> => {
   const groups = ((await Promise.all(logTasks)).filter(item => item != null) as unknown) as CloudWatchLogs.LogGroup[];
   const results: (string | null)[] = [];
 
-  const record = event.Records[0];
-  const time = record.Sns.Timestamp;
-  const startTime = moment(time)
-    .add(-1, 'm')
+  const startTime = moment(event.time)
+    .add(-15, 'm')
     .unix();
-  const endTime = moment(time).unix();
+  const endTime = moment(event.time).unix();
 
   // 計算
   for (const idx in groups) {
     results.push(await task(groups[idx], startTime, endTime));
   }
+
+  console.log('Query Results:', results);
 
   const messages: string[] = ['Lambda Error... Functons:'];
 
@@ -61,15 +54,16 @@ export default async (event: SNSEvent): Promise<void> => {
 const task = async (logGroup: CloudWatchLogs.LogGroup, startTime: number, endTime: number) => {
   if (!logGroup.logGroupName) return null;
 
-  const res = await client
-    .startQuery({
-      logGroupName: logGroup.logGroupName,
-      queryString: 'fields @message | limit 1 | filter @message like /(Exception|error|fail)/',
-      startTime,
-      endTime,
-      limit: 1,
-    })
-    .promise();
+  const request: CloudWatchLogs.Types.StartQueryRequest = {
+    logGroupName: logGroup.logGroupName,
+    queryString: 'stats count() | filter @message like /(Exception|error|fail)/',
+    startTime,
+    endTime,
+  };
+
+  console.log('request', request);
+
+  const res = await client.startQuery(request).promise();
 
   // 検索失敗
   if (!res.queryId) return null;
@@ -78,7 +72,7 @@ const task = async (logGroup: CloudWatchLogs.LogGroup, startTime: number, endTim
 
   while (true) {
     // 検索待ち
-    await sleep(100);
+    await sleep(500);
 
     const results = await client.getQueryResults({ queryId: res.queryId }).promise();
 

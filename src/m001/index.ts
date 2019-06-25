@@ -1,8 +1,8 @@
-import { SNSEvent } from 'aws-lambda';
+import { ScheduledEvent } from 'aws-lambda';
 import app from './app';
 
 // イベント入口
-export const handler = async (event: SNSEvent) => {
+export const handler = async (event: ScheduledEvent) => {
   // イベントログ
   console.log(event);
 
