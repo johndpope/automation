@@ -18,6 +18,9 @@ export default async (event: ScheduledEvent): Promise<void> => {
     return;
   }
 
+  // 自分自身を除外する
+  logGroups = logGroups.filter(item => item.logGroupName != `${GROUPNAME_PREFIX}-M001`);
+
   const logTasks = logGroups.map(async item => {
     const result = await client.describeLogStreams({ logGroupName: item.logGroupName as string }).promise();
 
@@ -36,6 +39,11 @@ export default async (event: ScheduledEvent): Promise<void> => {
   // 計算
   for (const idx in groups) {
     results.push(await task(groups[idx], startTime, endTime));
+  }
+
+  // エラー対象存在しない
+  if (results.filter(item => item != null).length === 0) {
+    return;
   }
 
   console.log('Query Results:', results);
