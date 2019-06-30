@@ -92,7 +92,7 @@ resource "aws_cloudwatch_event_rule" "m001" {
   name        = "${local.project_name_uc}_LambdaErrors"
   description = "Lambda Error"
 
-  schedule_expression = "cron(0/15 23-15 * * ? *)"
+  schedule_expression = "cron(0/60 23-15 * * ? *)"
 }
 
 # -----------------------------------------------

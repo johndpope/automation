@@ -32,7 +32,7 @@ export default async (event: ScheduledEvent): Promise<void> => {
   const results: (string | null)[] = [];
 
   const startTime = moment(event.time)
-    .add(-15, 'm')
+    .add(-60, 'm')
     .unix();
   const endTime = moment(event.time).unix();
 
