@@ -1,0 +1,26 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:DeleteBackup"
+      ],
+      "Resource": "arn:aws:dynamodb:ap-northeast-1:*:table/*/backup/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:CreateBackup"
+      ],
+      "Resource": "arn:aws:dynamodb:ap-northeast-1:*:table/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:ListBackups"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

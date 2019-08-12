@@ -8,7 +8,7 @@ data "archive_file" "m005" {
 }
 
 module "m005" {
-  source = "github.com/wwalpha/terraform-modules-lambda"
+  source = "github.com/wwalpha/terraform-module-registry/aws/lambda"
 
   filename         = "${data.archive_file.m005.output_path}"
   source_code_hash = "${filebase64sha256("${data.archive_file.m005.output_path}")}"
@@ -17,9 +17,9 @@ module "m005" {
   function_name    = "${local.project_name_uc}-M005"
   handler          = "index.handler"
   runtime          = "nodejs10.x"
-  role_name        = "${local.project_name_uc}-M005Role"
+  role_name        = "${local.project_name_uc}_Lambda_M005Role"
   layers           = ["${local.xray}"]
-  role_policy_json = ["${data.aws_iam_policy_document.m005_lambda.json}"]
+  role_policy_json = ["${file("iam/lambda_policy_m005.json")}"]
 
   trigger_principal  = "events.amazonaws.com"
   trigger_source_arn = "${aws_cloudwatch_event_rule.m005.arn}"
@@ -29,23 +29,6 @@ module "m005" {
   }
 
   timeout = 5
-}
-
-# ------------------------------
-# AWS Role Policy
-# ------------------------------
-data "aws_iam_policy_document" "m005_lambda" {
-  statement {
-    actions = [
-      "lambda:InvokeFunction",
-    ]
-
-    effect = "Allow"
-
-    resources = [
-      "*",
-    ]
-  }
 }
 
 # -----------------------------------------------

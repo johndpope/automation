@@ -1,7 +1,7 @@
 
 
 module "m004" {
-  source = "github.com/wwalpha/terraform-modules-lambda"
+  source = "github.com/wwalpha/terraform-module-registry/aws/lambda"
 
   filename         = "${data.archive_file.m004.output_path}"
   source_code_hash = "${filebase64sha256("${data.archive_file.m004.output_path}")}"
@@ -10,9 +10,9 @@ module "m004" {
   function_name      = "${local.project_name_uc}-M004"
   handler            = "index.handler"
   runtime            = "nodejs10.x"
-  role_name          = "${local.project_name_uc}-M004"
+  role_name          = "${local.project_name_uc}_Lambda_M004Role"
   layers             = ["${local.xray}"]
-  role_policy_json   = ["${data.aws_iam_policy_document.m004_lambda.json}"]
+  role_policy_json   = ["${file("iam/lambda_policy_m004.json")}"]
   trigger_principal  = "events.amazonaws.com"
   trigger_source_arn = "${aws_cloudwatch_event_rule.m004.arn}"
 
@@ -30,23 +30,6 @@ data "archive_file" "m004" {
   type        = "zip"
   source_file = "../build/m004/index.js"
   output_path = "../build/m004/index.zip"
-}
-
-# ------------------------------
-# AWS Role Policy
-# ------------------------------
-data "aws_iam_policy_document" "m004_lambda" {
-  statement {
-    actions = [
-      "lambda:InvokeFunction",
-    ]
-
-    effect = "Allow"
-
-    resources = [
-      "*",
-    ]
-  }
 }
 
 # -----------------------------------------------
@@ -72,10 +55,6 @@ resource "aws_cloudwatch_event_rule" "m004" {
 }
 PATTERN
 }
-# "project-name": [
-#   "my-demo-project-1",
-#   "my-demo-project-2"
-# ]
 
 # -----------------------------------------------
 # Amazon CloudWatch Event Target
