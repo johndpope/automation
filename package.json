@@ -7,7 +7,7 @@
     "start": "yarn build && yarn apply",
     "debug": "webpack -w --config configs/webpack.dev.ts",
     "build": "webpack --config configs/webpack.prod.ts",
-    "apply": "cd terraform && terraform apply -auto-approve -no-color"
+    "apply": "cd terraform && terraform apply -auto-approve"
   },
   "dependencies": {
     "aws-sdk": "latest",

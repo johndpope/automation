@@ -12,7 +12,11 @@ phases:
       - yarn install
   build:
     commands:
-      - yarn start
+      - yarn build
+      - cd terraform
+      - terraform init -no-color
+      - terraform plan -out tfplan -no-color
+      - terraform apply tfplan -no-color
 artifacts:
   files:
     - 'build/**/*'
