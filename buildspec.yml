@@ -15,6 +15,7 @@ phases:
       - yarn build
       - cd terraform
       - terraform init -no-color
+      - terraform workspace select $ENVIRONMENT -no-color
       - terraform plan -out tfplan -no-color
       - terraform apply tfplan -no-color
 artifacts:
