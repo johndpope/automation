@@ -21,3 +21,6 @@ phases:
 artifacts:
   files:
     - 'build/**/*'
+cache:
+  paths:
+    - yarn.lock
