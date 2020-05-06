@@ -9,3 +9,4 @@
 | M003   | Slack にメッセージ送信する                                       |
 | M004   | CodeBuild 失敗の CloudWatch Event                                |
 | M005   | CodePipeline 成功時、Slack へ通知                                |
+| M006   | CloudFront Create Invalidation                                   |
