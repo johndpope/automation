@@ -3,6 +3,11 @@ on:
     branches:
       - master
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ap-northeast-1
+
 jobs:
   UpdateCode:
     runs-on: ubuntu-latest
@@ -27,5 +32,4 @@ jobs:
 
       - uses: docker://amazon/aws-cli
         with:
-          args: lambda update-function-code --function-name PocketCards_CloudFront_Invalidation --zip m006.zip
-        working-directory: build
+          args: lambda update-function-code --function-name PocketCards_CloudFront_Invalidation --zip fileb://./build/m006.zip
