@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - continue-on-error: true
       # source checkout
       - uses: actions/checkout@master
 
