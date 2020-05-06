@@ -9,7 +9,9 @@ env:
   AWS_DEFAULT_REGION: ap-northeast-1
 
 jobs:
-  deploy:
+  UpdateCode:
+    runs-on: ubuntu-latest
+
     steps:
       # source checkout
       - uses: actions/checkout@master
