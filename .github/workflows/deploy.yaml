@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: 12.x
 
-      # install library
-      - run: yarn install
+      # install and build
+      - name: install and build
+        run: |
+          yarn install
+          yarn build
 
       # zip folders
       - name: zip folder
