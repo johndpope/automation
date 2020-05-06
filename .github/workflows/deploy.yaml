@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - continue-on-error: true
       # source checkout
       - uses: actions/checkout@master
 
@@ -50,6 +51,10 @@ jobs:
         with:
           args: lambda update-function-code --function-name PocketCards_CloudFront_Invalidation --zip fileb://./build/m006.zip
 
+  Slack:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Slack Notify
         uses: rtCamp/action-slack-notify@v2.0.1
         env:
