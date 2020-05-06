@@ -57,5 +57,5 @@ jobs:
           SLACK_CHANNEL: build
           SLACK_TITLE: Automation Build
           SLACK_COLOR: '#43a047'
-          SLACK_MESSAGE: ${{ GITHUB_REPOSITORY }} Build Success
-          SLACK_USERNAME: ${{ GITHUB_REPOSITORY }}
+          SLACK_MESSAGE: ${{ github.repository }} Build Success
+          SLACK_USERNAME: ${{ github.repository }}
