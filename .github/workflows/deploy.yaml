@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ap-northeast-1
+
+jobs:
+  deploy:
+    steps:
+      # source checkout
+      - uses: actions/checkout@master
+
+      # install nodejs
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+
+      # install library
+      - run: yarn install
+
+      # zip folders
+      - name: zip folder
+        working-directory: build
+        run: |
+          zip -r m006 m006/index.js
+
+      - uses: docker://amazon/aws-cli
+        with:
+          args: lambda update-function-code --function-name PocketCards_CloudFront_Invalidation --zip m006.zip
+        working-directory: build
