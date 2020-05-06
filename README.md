@@ -1,3 +1,5 @@
+![.github/workflows/deploy.yaml](https://github.com/pocket-cards/automation/workflows/.github/workflows/deploy.yaml/badge.svg?branch=master)
+
 # 保守自動化
 
 ## 機能一覧
