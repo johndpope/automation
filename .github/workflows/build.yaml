@@ -44,7 +44,7 @@ jobs:
       - name: zip folder
         working-directory: build
         run: |
-          zip -r m006 m006/index.js
+          zip -r -j m006 m006/**
 
       - uses: docker://amazon/aws-cli
         with:
