@@ -3,9 +3,9 @@ import { CloudFront } from 'aws-sdk';
 const DISTRIBUTION_ID = process.env.DISTRIBUTION_ID as string;
 
 export default async (): Promise<void> => {
-  const cloudfrnot = new CloudFront();
+  const cloudFront = new CloudFront();
 
-  cloudfrnot
+  await cloudFront
     .createInvalidation({
       DistributionId: DISTRIBUTION_ID,
       InvalidationBatch: {
