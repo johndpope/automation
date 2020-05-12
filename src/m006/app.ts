@@ -11,7 +11,7 @@ export default async (): Promise<void> => {
       InvalidationBatch: {
         Paths: {
           Quantity: 1,
-          Items: ['/'],
+          Items: ['/*'],
         },
         CallerReference: new Date().toUTCString(),
       },
